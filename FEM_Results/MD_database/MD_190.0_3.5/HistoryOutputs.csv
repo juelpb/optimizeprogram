@@ -1,0 +1,16 @@
+﻿Composite_modal_damping,CD
+EM_x_component,EM1
+EM_x_rotation,EM4
+EM_y_component,EM2
+EM_y_rotation,EM5
+EM_z_component,EM3
+EM_z_rotation,EM6
+Eigenfrequency,EIGFREQ
+Eigenvalue,EIGVAL
+Generalized_mass,GM
+PF_x_component,PF1
+PF_x_rotation,PF4
+PF_y_component,PF2
+PF_y_rotation,PF5
+PF_z_component,PF3
+PF_z_rotation,PF6

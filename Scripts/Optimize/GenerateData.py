@@ -48,7 +48,7 @@ GirderHeights   = {
                     }
 
 GirderHeightStep = {'2020' : 0.25, '2021' : 0.25, '2022' : 0.25}
-t_heights = GenListOfHeights(180, 220, 2) # 
+t_heights = GenListOfHeights(180, 220, 5) #TODO: Range changed due to testing
 OverWrite       = {2020 : True, 2021 : True, 2022: True} # If false -> the data will append to the .csv files
 
 

@@ -26,7 +26,7 @@ import matplotlib.dates as mdates
 path = os.getcwd()
 
 
-def flutter_speed(girder_height,tower_height,p_type,plot=None,p=None):
+def flutter_speed_DB(girder_height,tower_height,p_type,plot=None,p=None):
     
     """
     Calculate the critical wind speed for a specific configuration. 
@@ -41,7 +41,7 @@ def flutter_speed(girder_height,tower_height,p_type,plot=None,p=None):
     
     t0 = time.time()
     
-    MD_path = path + f'/FEM_Results/MD_database/MD_{tower_height}_{girder_height}'
+    MD_path = path + f'/FEM_Results/MD_database/MD_{tower_height}.0_{girder_height}' #TODO: Remove .0 when new database arrive
     
     def file_round(x, base):
             n_lower = base * math.trunc(x/base)

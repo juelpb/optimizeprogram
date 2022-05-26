@@ -1,0 +1,35 @@
+# -*- coding: mbcs -*-
+#
+<<<<<<< HEAD:03_Results/ModalData/abaqus.rpy.60
+# Abaqus/CAE Release 2019 replay file
+# Internal Version: 2018_09_24-20.41.51 157541
+# Run by juelpb on Thu Mar 17 13:04:25 2022
+=======
+# Abaqus/CAE Release 2017 replay file
+# Internal Version: 2016_09_27-23.54.59 126836
+# Run by sverr on Tue Mar 22 09:45:09 2022
+>>>>>>> dce3e98a3924b4efee459520af366e353b3ab881:03_Results/ModalData/abaqus.rpy.53
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(1.00586, 1.00116), width=148.063, 
+    height=99.3148)
+session.viewports['Viewport: 1'].makeCurrent()
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+execfile('c:/Users/sverr/Desktop/langenuenprogram/Scripts/Odb_pull_eigvals.py', 
+    __main__.__dict__)
+#: Model: c:/Users/sverr/Desktop/langenuenprogram/03_Results/GlobalAnalysis/LangenuenGlobal.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       142
+#: Number of Node Sets:          47
+#: Number of Steps:              5
+print 'RT script done'
+#: RT script done

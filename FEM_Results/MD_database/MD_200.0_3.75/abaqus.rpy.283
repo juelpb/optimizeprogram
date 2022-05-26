@@ -1,0 +1,57 @@
+# -*- coding: mbcs -*-
+#
+<<<<<<< HEAD:03_Results/ModalData/abaqus.rpy.283
+# Abaqus/CAE Release 2019 replay file
+# Internal Version: 2018_09_24-20.41.51 157541
+# Run by juelpb on Thu Apr  7 12:38:51 2022
+=======
+# Abaqus/CAE Release 2017 replay file
+# Internal Version: 2016_09_27-23.54.59 126836
+# Run by sverr on Thu Apr 07 10:46:23 2022
+>>>>>>> f5bfbf525a943d2401fb8445152e8d1a6fd6d33f:03_Results/ModalData/abaqus.rpy.861
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+<<<<<<< HEAD:03_Results/ModalData/abaqus.rpy.283
+session.Viewport(name='Viewport: 1', origin=(1.01054, 1.0075), width=148.752, 
+    height=99.9438)
+session.viewports['Viewport: 1'].makeCurrent()
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+execfile(
+    'c:/Users/juelpb/Desktop/langenuenprogram/Scripts/Odb_pull_eigvals.py', 
+    __main__.__dict__)
+#: ----------------------------
+#: c:\Users\juelpb\Desktop\langenuenprogram\03_Results/GlobalAnalysis/LangenuenGlobal.odb
+#: ----------------------------
+#: Model: c:/Users/juelpb/Desktop/langenuenprogram/03_Results/GlobalAnalysis/LangenuenGlobal.odb
+=======
+session.Viewport(name='Viewport: 1', origin=(1.00586, 1.00116), width=148.063, 
+    height=99.3148)
+session.viewports['Viewport: 1'].makeCurrent()
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+execfile('c:/Users/sverr/Desktop/langenuenprogram/Scripts/Odb_pull_eigvals.py', 
+    __main__.__dict__)
+#: ----------------------------
+#: c:\Users\sverr\Desktop\langenuenprogram\03_Results/GlobalAnalysis/LangenuenGlobal.odb
+#: ----------------------------
+#: Model: c:/Users/sverr/Desktop/langenuenprogram/03_Results/GlobalAnalysis/LangenuenGlobal.odb
+>>>>>>> f5bfbf525a943d2401fb8445152e8d1a6fd6d33f:03_Results/ModalData/abaqus.rpy.861
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+<<<<<<< HEAD:03_Results/ModalData/abaqus.rpy.283
+#: Number of Element Sets:       142
+=======
+#: Number of Element Sets:       132
+>>>>>>> f5bfbf525a943d2401fb8445152e8d1a6fd6d33f:03_Results/ModalData/abaqus.rpy.861
+#: Number of Node Sets:          47
+#: Number of Steps:              5
+print 'RT script done'
+#: RT script done

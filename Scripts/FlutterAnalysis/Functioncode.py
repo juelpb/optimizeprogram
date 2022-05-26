@@ -733,4 +733,4 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
     return U_flutter
 
 
-flutter_speed(4.0, 2022,p=True,plot=True)
+#flutter_speed(4.0, 2022,p=True,plot=True)

@@ -9,12 +9,14 @@ import ModalAnalysis
 import datetime
 import matplotlib.pyplot as plt
 import Quantities
+from Scripts.FlutterAnalysis.FunctioncodePrelim import flutter_speed_DB
 from Scripts.FlutterAnalysis.Functioncode import flutter_speed
 from Scripts.HelperFunctions import Pull_ModalData, Pull_modeshapes, sleep
 from scipy import optimize as Opt
 import sklearn.gaussian_process as gpr
 from mpl_toolkits import mplot3d
 
+path = os.getcwd()
 
 def Constraint(x0, p_type):
     """Calculates stability limit for configuration
@@ -33,16 +35,37 @@ def Constraint(x0, p_type):
     
     UserParameterFolder = path + '/Scripts/Optimize/'
     UserParameterFilename = 'LangenuenInput.py'
-    # Running modal analysis
+    #Running modal analysis
     ModalAnalysis.Run(UserParameterFilename, UserParameterFolder, t_height, g_height, p_type)
     
     sleep(2)
-    # Pulling data from modal analysis
+    #Pulling data from modal analysis
     Pull_ModalData()
     Pull_modeshapes()
     
+    #Calculating stability limit and fluttermode
+    
+    V_cr = flutter_speed(g_height,p_type,plot=False,p=False)
+    
+    return V_cr
+
+def ConstraintDB(x0, p_type):
+    """Calculates stability limit for configuration
+
+    Args:
+        x0 (list): Main parameters. [Tower height, Girder height]
+        p_type (int): Parametrization type.
+
+    Returns:
+        float: Stability limit (Critical wind velocity)
+    """
+    t_height = x0[0]
+    g_height = x0[1]
+    p_type = p_type
+    
+      
     # Calculating stability limit and fluttermode
-    V_cr, FlutterMode = flutter_speed(g_height, p_type,plot=False,p=False)
+    V_cr = flutter_speed_DB(g_height,t_height,p_type,plot=False,p=False)
     
     return V_cr
     
