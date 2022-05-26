@@ -122,8 +122,8 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
         
         n_modes = len([file for file in os.listdir(PathModeShapes)])
         
-        #indexes = range(1,n_modes,1) #* Skip mode 0
-        indexes = [1,3,5,12,13,25]
+        indexes = range(1,n_modes,1)
+       
         
                
         #* ----------------------
@@ -733,4 +733,4 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
     return U_flutter
 
 
-flutter_speed(4.0, 2022,p=True,plot=True)
+#flutter_speed(4.0, 2022,p=True,plot=True)

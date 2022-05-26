@@ -1,0 +1,22 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB section_properties
+Abaqus 3DEXPERIENCE R2017x
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 5 tokens from Flexnet server abaqus.lisens.ntnu.no.
+<725 out of 1000 licenses remain available>.
+Begin Analysis Input File Processor
+5/21/2022 10:16:14 AM
+Run pre.exe
+5/21/2022 10:16:24 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+5/21/2022 10:16:24 AM
+Run standard.exe
+5/21/2022 10:16:33 AM
+End Abaqus/Standard Analysis
+Begin MFS->SFS and SIM cleanup
+5/21/2022 10:16:35 AM
+Run SMASimUtility.exe
+5/21/2022 10:16:35 AM
+End MFS->SFS and SIM cleanup
+Abaqus JOB section_properties COMPLETED

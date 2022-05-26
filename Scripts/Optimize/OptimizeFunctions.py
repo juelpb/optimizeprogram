@@ -15,6 +15,7 @@ from scipy import optimize as Opt
 import sklearn.gaussian_process as gpr
 from mpl_toolkits import mplot3d
 
+path = os.getcwd()
 
 def Constraint(x0, p_type):
     """Calculates stability limit for configuration
@@ -42,7 +43,7 @@ def Constraint(x0, p_type):
     Pull_modeshapes()
     
     # Calculating stability limit and fluttermode
-    V_cr, FlutterMode = flutter_speed(g_height, p_type,plot=False,p=False)
+    V_cr = flutter_speed(g_height, p_type,plot=False,p=False)
     
     return V_cr
     

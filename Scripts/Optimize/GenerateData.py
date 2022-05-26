@@ -99,7 +99,9 @@ for p_type in p_type:
                         file.write(f'{round(t_height,2)}, {round(g_height,2)}, {Cost}\n')
                     i += 1
                     
+                
                 except Exception: # To handle abaqus time increment error. Minimal adjustments to the heights until the analysis starts.
+                    print("--- !! EXCEPTION !! ---")
                     err_m += 1
                     
                     if j == 10:
@@ -116,6 +118,7 @@ for p_type in p_type:
                         else:
                             g_height += 0.001
                     continue
+                
                 
                 ok += 1
 

@@ -35,5 +35,5 @@ year = 22
     #* Write predicted data to excel-sheet, and .csv-files for the fluttercode. 
     #* Storing in an easy-to-read excel comes in handy if encountering errors or unexpected results
 
-write_GPRdata_to_xl(year)
+#write_GPRdata_to_xl(year)
 push_GPRdata_to_fluttercode(year)
