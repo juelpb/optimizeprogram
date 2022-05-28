@@ -41,7 +41,7 @@ def flutter_speed_DB(girder_height,tower_height,p_type,plot=None,p=None):
     
     t0 = time.time()
     
-    MD_path = path + f'/FEM_Results/MD_database/MD_{tower_height}.0_{girder_height}' #TODO: Remove .0 when new database arrive
+    MD_path = path + f'/FEM_Results/MD_database/MD_{tower_height}_{girder_height}' 
     
     def file_round(x, base):
             n_lower = base * math.trunc(x/base)
@@ -175,7 +175,7 @@ def flutter_speed_DB(girder_height,tower_height,p_type,plot=None,p=None):
         #* ----------------------
         #* C_stru
         #* ---------------------- 
-        ksi = 0.005
+        ksi = 0.002 #TODO: Change back
         C_stru = np.array([2*Mass[i]*Omega[i]*ksi for i in range(len(indexes))])
         
         modal_info['C_stru'] = C_stru

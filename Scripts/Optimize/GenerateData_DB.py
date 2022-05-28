@@ -48,7 +48,7 @@ GirderHeights   = {
                     }
 
 GirderHeightStep = {'2020' : 0.25, '2021' : 0.25, '2022' : 0.25}
-t_heights = GenListOfHeights(180, 220, 10) #TODO: Range changed due to testing
+t_heights = GenListOfHeights(180, 220, 2) #! Step has to be acording to database step
 OverWrite       = {2020 : True, 2021 : True, 2022: True} # If false -> the data will append to the .csv files
 
 
@@ -74,11 +74,9 @@ for p_type in p_type:
         w_or_a = 'a' 
         
     i = 1
-    err_m = 0 # Variable to keep track of abaqus error messages
-
     for t_height in t_heights:
         for g_height in g_heights:
-            
+            print("------------------------------")
             print(f'Sampling data iteration {i} of {len(t_heights)*len(g_heights)}')
             V_cr = OptFunc.ConstraintDB([t_height, g_height], p_type)
             V_crs.append(V_cr)

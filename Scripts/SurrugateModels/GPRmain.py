@@ -29,7 +29,7 @@ year = 22
     #* Plot the surrogate models for the AD's to make sure these are OK.
 
 #plot_single_model(year, 'P4')
-#plot_all_models(year)
+plot_all_models(year)
 
 #* --------------------------------- STEP 4 -----------------------------------
     #* Write predicted data to excel-sheet, and .csv-files for the fluttercode. 

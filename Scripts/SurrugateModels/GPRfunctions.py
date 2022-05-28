@@ -183,6 +183,7 @@ def GPR(Vred_data, AD_data,heights, n_h):
     # Gaussian process (GPR)
     #! Change GPR parameters here:
     #gap_Vred = max([max_gap(lst) for lst in Vred_data])
+    #TODO: bounds = [(4,20),(0.1,10)] -- length_scale = [4, 0.25] -- 'alpha' : 0.13,
     bounds = [(4,20),(0.1,10)] 
     length_scale = [4, 0.25]
 
