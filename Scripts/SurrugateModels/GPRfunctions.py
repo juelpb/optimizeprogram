@@ -270,7 +270,7 @@ def plot_single_model(year, AD_name):
     n_h = len(np.arange(min(heights)/1000, max(heights)/1000+spaceing,spaceing))
     X, Y, Kp, Hp, Zp = GPR(Vred_data, AD_data, heights,n_h)
 
-    fig = plt.figure(figsize=(10,10),constrained_layout=True)
+    fig = plt.figure(figsize=(6,6),constrained_layout=True)
     ax = fig.add_subplot(111, projection = '3d')
 
     p_surf = ax.plot_surface(Kp, Hp, Zp,label="Predicted Surface", rstride=1, cstride=1, cmap='viridis', linewidth=0, alpha=0.7) # Plot surrugate model
@@ -282,24 +282,25 @@ def plot_single_model(year, AD_name):
 
     for i in range(len(Y)):
         if i == 0: # Step for adding label.
-            ax.scatter(X[i][0],X[i][1],Y[i],label="Data Points",color='black')
+            ax.scatter(X[i][0],X[i][1],Y[i],s=10,label="Data Points",color='black')
             ax.legend()
         else:
-            ax.scatter(X[i][0],X[i][1],Y[i],color='black') # Plot obersvations
+            ax.scatter(X[i][0],X[i][1],Y[i],s=10,color='black') # Plot obersvations
 
 
-    plt.xlabel('K')
+    plt.xlabel('$\hat{V}$')
     plt.ylabel('H')
 
     name = f"LN{year}_{ad_colnames[ad_idx]}"
-    fig.suptitle(name)
+    #fig.suptitle(name)
 
     filepath = rootFolder + '/Scripts/SurrugateModels/Figures/'
     file_name = str(f"{name}.png")
     plt.savefig(filepath+file_name,dpi=300)
     print(f"-- Saved: {file_name} {ad_idx+1}/{len(ad_colnames)} --")
     print("--------------------------------------------------------")
-    plt.show()
+    plt.tight_layout()
+    #plt.show()
     
 
 
