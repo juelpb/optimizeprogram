@@ -74,8 +74,8 @@ def pull_static_coeff(p_type, g_height, alpha=0):
     arr1 = df1.to_numpy()
     arr2 = df2.to_numpy()
     
-    arr1[:,0] = arr1[:,0]*360/(2*np.pi)
-    arr2[:,0] = arr2[:,0]*360/(2*np.pi)
+    arr1[:,0] = arr1[:,0]
+    arr2[:,0] = arr2[:,0]
     
     arr1 = arr1[np.argsort(arr1[:,0])]
     arr2 = arr2[np.argsort(arr2[:,0])]
@@ -103,8 +103,8 @@ def pull_static_coeff(p_type, g_height, alpha=0):
     da1 = (np.amax(arr1[:,0])-np.amin(arr1[:,0]))/(len(arr1[:,0]))
     da2 = (np.amax(arr2[:,0])-np.amin(arr2[:,0]))/(len(arr2[:,0]))
     
-    b_idx = 200
-    d_idx = 50
+    b_idx = 200 #indexes to average the derivatives over
+    d_idx = 5 #indexes to average the derivatives over
     
     a1 = arr1[[idx1+k for k in range(-b_idx,b_idx,d_idx)], 0]
     a2 = arr2[[idx2+k for k in range(-b_idx,b_idx,d_idx)], 0]
@@ -131,3 +131,4 @@ def pull_static_coeff(p_type, g_height, alpha=0):
     dC_m = np.interp(g_height, dC_data[:,0], dC_data[:,3])
         
     return C_d, dC_d, C_l, dC_l, C_m, dC_m
+
