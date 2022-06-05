@@ -131,7 +131,3 @@ def pull_static_coeff(p_type, g_height, alpha=0):
     dC_m = np.interp(g_height, dC_data[:,0], dC_data[:,3])
         
     return C_d, dC_d, C_l, dC_l, C_m, dC_m
-
-
-
-

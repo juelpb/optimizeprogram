@@ -172,12 +172,13 @@ def Optimize(p_type, threshold, plot=True):
         # --------------------
         ax = fig.add_subplot(122, projection='3d')            
         surf = ax.plot_surface(x0, x1, Z_cost, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.5)
-        surf = ax.plot_trisurf(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='k', alpha=0.5,label='Stable Area')
+        #surf = ax.plot_trisurf(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='k', alpha=0.5,label='Stable Area')
 
         surf._facecolors2d = surf._facecolor3d
         surf._edgecolors2d = surf._edgecolor3d
 
-        ax.scatter(t_heights, g_heights, Cost, color='black',s=3, alpha=0.5,label='Data Points')
+        ax.scatter(t_heights, g_heights, Cost, color='black',s=3, alpha=0.8,label='Data point')
+        ax.scatter(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='green', s=8, alpha=0.8, label='$V_{cr} > 76 m/s$')
         ax.set_xlabel('Tower height [m]')
         ax.set_ylabel('Girder height [m]')
         ax.set_zlabel('NOK',rotation=90)

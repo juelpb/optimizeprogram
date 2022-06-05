@@ -12,6 +12,10 @@ import WindSpectra as ws
 import Static_coeff as sc
 import scipy.integrate as integrate
 
+plt.rc('xtick', labelsize=15) 
+plt.rc('ytick', labelsize=15)
+plt.rcParams.update({'font.size': 15})
+
 
 def ResponseAnalysis(p_type, g_height, U, I_u, alpha=0, plot=True):
     """Calculating buffeting response for latest modal- and AD data
@@ -142,7 +146,7 @@ def ResponseAnalysis(p_type, g_height, U, I_u, alpha=0, plot=True):
     
     if plot==True:
         #________Plot_________
-        modes = ['1HS', '1VA', '1VS', '1HA', '2VS', '2VA', '1TS']
+        modes = ['HS1', 'VA1', 'VS1', 'HA1', 'VS2', 'VA2', 'TS1']
         modes_numb = [0,1,2,3,4,6,22]
         idx1 = 0
         idx2 = 0
@@ -206,7 +210,7 @@ def ResponseAnalysis(p_type, g_height, U, I_u, alpha=0, plot=True):
         # RMS of standard deviation
         fig = plt.figure(figsize=(14, 6))
         fig.tight_layout()
-        fig.suptitle('Standard deviation of buffeting response', fontsize=16)
+        #fig.suptitle('Standard deviation of buffeting response', fontsize=16)
 
         ax1 = fig.add_subplot(311)
         ax1.title.set_text('Horizontal response')

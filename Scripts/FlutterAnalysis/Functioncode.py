@@ -173,7 +173,7 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
         #* ----------------------
         #* C_stru
         #* ---------------------- 
-        ksi = 0.005
+        ksi = 0.002 # According to N400 from NPRA
         C_stru = np.array([2*Mass[i]*Omega[i]*ksi for i in range(len(indexes))])
         
         modal_info['C_stru'] = C_stru

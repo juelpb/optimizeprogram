@@ -123,3 +123,5 @@ for p_type in p_type:
                 ok += 1
 
 
+
+print(f"--- Error messages: {err_m} ---")
