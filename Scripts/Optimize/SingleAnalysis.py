@@ -18,8 +18,8 @@ UserParameterFilename = 'LangenuenInput.py'
 
 #------------------------------
 # Set parameters for analysis
-t_height    = 206
-g_height    = 4.0
+t_height    = 220
+g_height    = 3.7
 p_type      = 2022
 #------------------------------
 

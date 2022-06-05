@@ -165,52 +165,76 @@ def Optimize(p_type, threshold, plot=True):
 
     if plot == True:
         # Plot GPR, scatter samples
-        fig = plt.figure(figsize=(10,4))
-        
-        
+        fig = plt.figure(figsize=(10,5))
+        from matplotlib.gridspec import GridSpec
         # --------------------
         # FIGURE 1
         # --------------------
-        ax = fig.add_subplot(121, projection='3d')            
-        surf = ax.plot_surface(x0, x1, Z_vcr, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.5)
+        gs = GridSpec(3,4)
+        ax = plt.subplot(gs[:2,:2],projection='3d')            
+        surf = ax.plot_surface(x0, x1, Z_vcr, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.7)
         
         surf._facecolors2d = surf._facecolor3d
         surf._edgecolors2d = surf._edgecolor3d
-        
+        ax.scatter(Optimal[0], Optimal[1], Optimal[3], color='red',s=150,marker='*',label="Optimal")
         ax.scatter(t_heights, g_heights, V_cr, color='black',s=3,label='Data Points', alpha=0.5)
-        ax.set_xlabel('Tower height [m]')
-        ax.set_ylabel('Girder height [m]')
+        ax.set_xlabel('$h_t$')
+        ax.set_ylabel('$h_g$')
         ax.set_zlabel('m/s',rotation=90)
-        ax.legend(loc=1,prop={'size':7})
         ax.set_yticks([3.5 ,3.75 ,4.0 ,4.25 ,4.5])
-        ax.text2D(0.05, 0.95, 'Critical wind speed', transform=ax.transAxes)
-
-        props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-        txtstr = f'Optimal design: TowerHeight: {Optimal[0]}m | GirderHeight: {round(Optimal[1],3)}m | for the cost of {round(Optimal[2]/1e6,2)}MNOK | Critical wind speed is {round(Optimal[3],2)}'
-        ax.text2D(-0.3, 1.05, txtstr,transform=ax.transAxes,bbox=props)
-
+        ax.text2D(-0.1, 0.95, 'Critical wind speed', transform=ax.transAxes)
+        props = dict(boxstyle='square', facecolor='#cbcefb', alpha=0.9)
+        txtstr = f'Optimal configuration: $h_t$ = {Optimal[0]}m | $h_g$ = {round(Optimal[1],3)}m | Cost = {round(Optimal[2]/1e6,2)}MNOK ' '| $V_{cr}$'f' = {round(Optimal[3],2)} m/s'
+        ax.text2D(0.15, 1.1, txtstr,transform=ax.transAxes,bbox=props)
+        ax.legend(loc=1,prop={'size':7})
+        # --------------------
+        # SUB-FIGURE 1
+        # --------------------
+        ax = plt.subplot(gs[-1,0],projection='3d')            
+        surf = ax.plot_surface(x0, x1, Z_vcr, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.7)
+        
+        surf._facecolors2d = surf._facecolor3d
+        surf._edgecolors2d = surf._edgecolor3d
+        ax.scatter(Optimal[0], Optimal[1], Optimal[3], color='red',s=100,marker='*',label="Optimal")
+        ax.scatter(t_heights, g_heights, V_cr, color='black',s=1,label='Data Points', alpha=0.5)
+        ax.view_init(20,152)
+        # --------------------
+        # SUB-FIGURE 2
+        # --------------------
+        ax = plt.subplot(gs[-1,1],projection='3d')            
+        surf = ax.plot_surface(x0, x1, Z_vcr, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.7)
+        
+        surf._facecolors2d = surf._facecolor3d
+        surf._edgecolors2d = surf._edgecolor3d
+        ax.scatter(t_heights, g_heights, V_cr, color='black',s=1,label='Data Points', alpha=1)
+        ax.scatter(Optimal[0], Optimal[1], Optimal[3], color='red',s=100,marker='*',label="Optimal")
+        ax.set_zticks([])
+        ax.view_init(90,-90)
+               
         # --------------------
         # FIGURE 2
         # --------------------
-        ax = fig.add_subplot(122, projection='3d')            
-        surf = ax.plot_surface(x0, x1, Z_cost, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.5)
+        ax = plt.subplot(gs[:,2:],projection='3d')           
+        surf = ax.plot_surface(x0, x1, Z_cost, rstride=1, cstride=1, cmap='jet', linewidth=0, antialiased=False, alpha=0.7)
         #surf = ax.plot_trisurf(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='k', alpha=0.5,label='Stable Area')
 
         surf._facecolors2d = surf._facecolor3d
         surf._edgecolors2d = surf._edgecolor3d
-
+        ax.scatter(Optimal[0], Optimal[1], Optimal[2], color='red',s=150,marker='*',label='Optimal')
         ax.scatter(t_heights, g_heights, Cost, color='black',s=3, alpha=0.8,label='Data point')
-        ax.scatter(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='green', s=5, alpha=0.6, label='$V_{cr} > 76 m/s$')
-        ax.set_xlabel('Tower height [m]')
-        ax.set_ylabel('Girder height [m]')
+        ax.scatter(configs_arr[:,0], configs_arr[:,1], configs_arr[:,2], color='green', s=9, alpha=0.6, label='$V_{cr} > 76 m/s$')
+        ax.set_xlabel('$h_t$')
+        ax.set_ylabel('$h_g$')
         ax.set_zlabel('NOK',rotation=90)
         ax.set_yticks([3.5 ,3.75 ,4.0 ,4.25 ,4.5])
         ax.legend(loc=1,prop={'size':7})
         ax.text2D(0.05, 0.95, 'Configuration cost', transform=ax.transAxes)
-        plt.savefig(path+f'/Scripts/Optimize/Optimize_Figure_{p_type}.png',dpi=300)
+        plt.tight_layout()
+        plt.savefig(path+f'/Scripts/Optimize/Optimize_Figure_{p_type}.pdf')#,dpi=600)
         #plt.show()
 
     
     print(f'Optimal design is:\nTowerHeight: {Optimal[0]}m\nGirderHeight: {round(Optimal[1],3)}m\nfor the cost of {round(Optimal[2]/1e6,2)}MNOK\nCritical wind speed is {round(Optimal[3],2)}')
     return Optimal
 
+Optimize(2022, 76, plot=True)

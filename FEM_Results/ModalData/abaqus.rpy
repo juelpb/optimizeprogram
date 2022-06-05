@@ -2,7 +2,7 @@
 #
 # Abaqus/CAE Release 2019 replay file
 # Internal Version: 2018_09_24-20.41.51 157541
-# Run by juelpb on Fri Jun  3 10:27:20 2022
+# Run by juelpb on Sun Jun  5 15:18:51 2022
 #
 
 # from driverUtils import executeOnCaeGraphicsStartup
@@ -23,7 +23,7 @@ execfile(
 #: Number of Assembly instances: 0
 #: Number of Part instances:     1
 #: Number of Meshes:             1
-#: Number of Element Sets:       144
+#: Number of Element Sets:       148
 #: Number of Node Sets:          47
 #: Number of Steps:              5
 print 'RT script done'
