@@ -6,11 +6,23 @@ import csv
 path = os.getcwd()
 sys.path.append(path)
 ThisFolder = path + '/Attachments/ModalAnalysis'
-from Scripts.FunctionsOld.Evaluate_modeshapes import Evaluate_modeshapes, get_modeshape
+from Attachments.ModalAnalysis.EvalModeShapes.Evaluate_modeshapes import Evaluate_modeshapes, get_modeshape
+
+from matplotlib import font_manager
+
+font_dirs = ['C:/Users/juelpb/AppData/Local/Microsoft/Windows/Fonts']
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+
+for font_file in font_files:
+    font_manager.fontManager.addfont(font_file)
+
+# set font
+plt.rcParams['font.family'] = 'Charter BT'
+
 
 ResultPath = path + '/FEM_Results/ModalData'
 
-eval = Evaluate_modeshapes(ResultPath)
+eval = Evaluate_modeshapes(206,4.0)
 
 header_ = ['Mode','Abaqus\nno.','Generalized mass\n$\widetilde{M}_{i}$[kg]','Frequency\n[Hz]','Horizontal','Vertical','Torsional']
 
@@ -50,7 +62,7 @@ def gen_row_data(mode,name):
 ncols = 7
 nrows = len(eval.values())+1
 
-header_height = 0.2
+header_height = 0.15
 row_height = 0.1
 height_ratios = []
 for i in range(nrows):
@@ -70,12 +82,17 @@ for ax in axes.flatten():
     ax.tick_params(labelbottom=0, labelleft=0, bottom=0, top=0, left=0, right=0)
     ax.ticklabel_format(useOffset=False, style="plain")
     for _,s in ax.spines.items():
-        s.set_visible(True)
+        if _ == str('left'):
+            s.set_visible(False)
+        elif _ == str('right'):
+            s.set_visible(False)
+        else:
+            s.set_visible(True)
 
 #------------
 # HEADER
 #------------
-text_kw = dict(ha="center", va="center", size=13)
+text_kw = dict(ha="center", va="center", size=14)
 for i,ax in enumerate(axes[0,:]):
     ax.text(0.5, 0.5, header_[i], transform=ax.transAxes, **text_kw)
     ax.patch.set_color('#cbcefb')
@@ -108,4 +125,4 @@ for row in range(1,nrows):
             
             
 
-plt.savefig(ThisFolder + '/Table_modal.png',dpi=300)
+plt.savefig(ThisFolder + '/Table_modal.png',dpi=400)

@@ -2,7 +2,7 @@
 #
 # Abaqus/CAE Release 2019 replay file
 # Internal Version: 2018_09_24-20.41.51 157541
-# Run by juelpb on Tue May 24 12:25:06 2022
+# Run by juelpb on Fri Jun  3 10:27:20 2022
 #
 
 # from driverUtils import executeOnCaeGraphicsStartup
@@ -16,14 +16,14 @@ session.viewports['Viewport: 1'].makeCurrent()
 from driverUtils import executeOnCaeStartup
 executeOnCaeStartup()
 execfile(
-    'C:/Users/juelpb/Desktop/langenuenprogram/Scripts/OdbPullModeshapes.py', 
+    'C:/Users/juelpb/Desktop/optimizeprogram/Scripts/OdbPullModeshapes.py', 
     __main__.__dict__)
-#: Model: C:/Users/juelpb/Desktop/langenuenprogram/FEM_Results/GlobalAnalysis/LangenuenGlobal.odb
+#: Model: C:/Users/juelpb/Desktop/optimizeprogram/FEM_Results/GlobalAnalysis/LangenuenGlobal.odb
 #: Number of Assemblies:         1
 #: Number of Assembly instances: 0
 #: Number of Part instances:     1
 #: Number of Meshes:             1
-#: Number of Element Sets:       148
+#: Number of Element Sets:       144
 #: Number of Node Sets:          47
 #: Number of Steps:              5
 print 'RT script done'

@@ -12,27 +12,27 @@ import matplotlib.pyplot as plt
 #os.chdir('C:/Users/juelp/Desktop/langenuenprogram')
 path = os.getcwd()
 
-#  ---------------- Change ref modes here! ------------------------
-current_ref_modes = {'VS1' : 4,
-                    'TS1' : 14,
-                  }
-# -----------------------------------------------------------------
-#  ---------------- Change ref modes here! ------------------------
-# current_ref_modes = {'HS1' : 1,
-#                      'VA1' : 2,
-#                      'VS1' : 3,
-#                      'HA1' : 4,
-#                      'VS2' : 5,
-#                      'VA2' : 7,
-#                      'VS3' : 12,
-#                      'HS2' : 13,
-#                      'VA3' : 15,
-#                      'TS1' : 23,
-#                      'VS4' : 29,
-#                      'TA1' : 30,
-#                      'HA2' : 37,
-#                      'VA4' : 34
-#                      }
+# #  ---------------- Change ref modes here! ------------------------
+# current_ref_modes = {'VS1' : 4,
+#                     'TS1' : 14,
+#                   }
+# # -----------------------------------------------------------------
+# ---------------- Change ref modes here! ------------------------
+current_ref_modes = {'HS1' : 1,
+                     'VA1' : 2,
+                     'HA1' : 3,
+                     'VS1' : 4,
+                     'VS2' : 5,
+                     'VA2' : 8,
+                     'HS2' : 12,
+                     'VS3' : 13,
+                     'VA3' : 16,
+                     'TS1' : 19,
+                     'VS4' : 31,
+                     'TA1' : 30,
+                     'HA2' : 35,
+                     'VA4' : 37
+                     }
 # -----------------------------------------------------------------
 def Normalize_lst(lst):
     #TODO: Function should be moved to HelperFunctions
@@ -102,4 +102,4 @@ def GENERATE_REF_MODES(current_ref_modes,tH,gH):
 
 
 
-#GENERATE_REF_MODES(current_ref_modes, 180,3.5)
+GENERATE_REF_MODES(current_ref_modes, 206,4.0)

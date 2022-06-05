@@ -126,7 +126,7 @@ def Evaluate_modeshapes(tH,gH):
                             continue
                         Z_data = get_modeshape(i, Z_idx,ModalDataPath)
                         Z_data = Normalize_lst(Z_data)
-                        #Z_data = list(Z_data)
+                        
                                            
                         sim = simularity(Z_data, ref)
                         # print(sim,i)
@@ -135,7 +135,7 @@ def Evaluate_modeshapes(tH,gH):
                         # plt.plot(ref)
                         # plt.show()
                         
-                        if sim > 98:
+                        if sim > 99.7:
                             #print(f"Mode {i} matches {refname} -- Sim = {sim}")
                             output[refname[:-4]].append(i)
 
@@ -146,7 +146,7 @@ def Evaluate_modeshapes(tH,gH):
                             continue
                         Xr_data = get_modeshape(i, Xr_idx,ModalDataPath)
                         Xr_data = Normalize_lst(Xr_data)
-                        #Xr_data = list(Xr_data)
+                       
 
                         
                         sim = simularity(Xr_data, ref)
@@ -156,7 +156,7 @@ def Evaluate_modeshapes(tH,gH):
                         # plt.plot(ref)
                         # plt.show()
 
-                        if sim > 98:
+                        if sim > 99.7:
                             #print(f"Mode {i} matches {refname} -- Sim = {sim}")
                             output[refname[:-4]].append(i)
                             
@@ -168,7 +168,7 @@ def Evaluate_modeshapes(tH,gH):
                         
                         sim = simularity(Y_data, ref)
 
-                        if sim > 90:
+                        if sim > 99.9:
                             #print(f"Mode {i} matches {refname} -- Sim = {sim}")
                             output[refname[:-4]].append(i)
 
@@ -231,32 +231,32 @@ def Evaluate_modeshapes(tH,gH):
 
 
 
-G_HEIGHTS = [3.5 ,3.75 ,4.0 ,4.25 ,4.5]
-T_HEIGHTS = np.arange(180,222,2)
+# G_HEIGHTS = [3.5 ,3.75 ,4.0 ,4.25 ,4.5]
+# T_HEIGHTS = np.arange(180,222,2)
 
-shape = (len(G_HEIGHTS),len(T_HEIGHTS))
-idxes = np.zeros(shape)
+# shape = (len(G_HEIGHTS),len(T_HEIGHTS))
+# idxes = np.zeros(shape)
 
-current_ref_modes = {'VS1' : 4,
-                    'TS1' : 14,
-                  }
+# current_ref_modes = {'VS1' : 4,
+#                     'TS1' : 14,
+#                   }
 
-GENERATE_REF_MODES(current_ref_modes, 180,3.5)
-#modes = Evaluate_modeshapes(180, 3.5)
-#print(modes)
+# GENERATE_REF_MODES(current_ref_modes, 180,3.5)
+# #modes = Evaluate_modeshapes(180, 3.5)
+# #print(modes)
 
-for j,tH in enumerate(T_HEIGHTS):
-    for i,gH in enumerate(G_HEIGHTS):
-         try:
-            print("------------------------")
-            print(f"gH : {gH} -- tH : {tH}")
-            modes = Evaluate_modeshapes(tH, gH)
-            print(modes)
-            idxes[i,j] = modes['TS1']
-            GENERATE_REF_MODES(modes, tH, gH)
-         except IndexError:
-             idxes[i,j] = 0
-             continue
+# for j,tH in enumerate(T_HEIGHTS):
+#     for i,gH in enumerate(G_HEIGHTS):
+#          try:
+#             print("------------------------")
+#             print(f"gH : {gH} -- tH : {tH}")
+#             modes = Evaluate_modeshapes(tH, gH)
+#             print(modes)
+#             idxes[i,j] = modes['TS1']
+#             GENERATE_REF_MODES(modes, tH, gH)
+#          except IndexError:
+#              idxes[i,j] = 0
+#              continue
          
          
-np.savetxt(path + '/Attachments/ModalAnalysis/INDEXES.csv', idxes,delimiter=',',fmt='%d')
+# np.savetxt(path + '/Attachments/ModalAnalysis/INDEXES.csv', idxes,delimiter=',',fmt='%d')

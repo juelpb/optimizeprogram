@@ -10,14 +10,14 @@ import os
 ##########################
 ##########################
 # !!! KEEP FOLLOWING LINES AT THEIR CURRENT POSITION !!!
-t_height=220
-girder_def_mid=8.597603487857896
-girder_def_south=0.575600530331636
-girder_def_north=0.5744006096183712
-cable_def_mid=9.826958380805909
-tower_def=1.5781999524829398
-cable_sf_max=135928729.31342062
-hanger_sf_max=812836.7205116324
+t_height=206
+girder_def_mid=8.721851949649537
+girder_def_south=0.5243842016166426
+girder_def_north=0.5232823103811524
+cable_def_mid=10.804935343024706
+tower_def=1.1921376126852121
+cable_sf_max=154767878.83242053
+hanger_sf_max=827265.338218634
 girder_area=2.4019285714285714
 girder_I11=6.363957142857143
 girder_I22=186.54142857142858
