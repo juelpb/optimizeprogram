@@ -181,8 +181,6 @@ def GPR(Vred_data, AD_data,heights, n_h):
     Kp, Hp = np.meshgrid(k_ax, h_ax)
 
     # Gaussian process (GPR)
-    #! Change GPR parameters here:
-    #gap_Vred = max([max_gap(lst) for lst in Vred_data])
     bounds = [(4,20),(0.1,10)] 
     length_scale = [4, 0.25]
 
@@ -323,7 +321,7 @@ def write_GPRdata_to_xl(year):
         
         AD_data, Vred_data, heights = gen_input_data(year, ad)
         
-        spaceing = 0.05 #! Change spaceing
+        spaceing = 0.05 
         n_h = len(np.arange(min(heights)/1000, max(heights)/1000+spaceing,spaceing))   
 
         variance = np.var(AD_data)

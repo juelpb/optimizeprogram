@@ -49,7 +49,7 @@ options = {
     'moldflowFiles':[],
     'moldflowMaterial':OFF,
     'mp_file_system':(DETECT, DETECT),
-    'mp_head_node':('laptop-ovsceet7.wlan.ntnu.no', 'laptop-ovsceet7', '10.24.9.26'),
+    'mp_head_node':('laptop-ovsceet7.wlan.ntnu.no', 'laptop-ovsceet7', '10.24.10.248'),
     'mp_host_list':(('laptop-ovsceet7', 4),),
     'mp_mode':MPI,
     'mp_mode_requested':MPI,

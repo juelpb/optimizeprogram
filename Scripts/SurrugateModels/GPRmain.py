@@ -29,11 +29,11 @@ year = 22
     #* Plot the surrogate models for the AD's to make sure these are OK.
 
 #plot_single_model(year, 'P4')
-#plot_all_models(year)
+plot_all_models(year)
 
 #* --------------------------------- STEP 4 -----------------------------------
     #* Write predicted data to excel-sheet, and .csv-files for the fluttercode. 
     #* Storing in an easy-to-read excel comes in handy if encountering errors or unexpected results
 
-#write_GPRdata_to_xl(year)
-#push_GPRdata_to_fluttercode(year)
+write_GPRdata_to_xl(year)
+push_GPRdata_to_fluttercode(year)

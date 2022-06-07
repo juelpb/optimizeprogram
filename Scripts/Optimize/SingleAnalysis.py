@@ -19,13 +19,16 @@ UserParameterFilename = 'LangenuenInput.py'
 #------------------------------
 # Set parameters for analysis
 t_height    = 220
-g_height    = 4.0
+g_height    = 3.7
 p_type      = 2022
 #------------------------------
 
 
 Run(UserParameterFilename, UserParameterFolder, t_height, g_height, p_type) # Global analysis
+
 Pull_ModalData()
 Pull_modeshapes()
+
 sleep(2)                                                                    # Give abaqus proper time to close
+
 flutter_speed(g_height, p_type,p=True,plot=True)                            # Run critical wind speed analysis

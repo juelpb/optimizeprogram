@@ -147,7 +147,7 @@ def ResponseAnalysis(p_type, g_height, U, I_u, alpha=0, plot=True):
     if plot==True:
         #________Plot_________
         modes = ['HS1', 'VA1', 'VS1', 'HA1', 'VS2', 'VA2', 'TS1']
-        modes_numb = [0,1,2,3,4,6,22]
+        modes_numb = [0,1,2,3,4,6,22] #! For the optimal consept H_g = 3.7 m -- H_t = 220 m. 
         idx1 = 0
         idx2 = 0
         idx3 = 0

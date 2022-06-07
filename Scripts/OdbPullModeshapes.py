@@ -47,7 +47,6 @@ for mode in range(n_modes_to_plot):
     output_lst = [] # Empty list to collect outputs 
 
     for i in range(len(U)):
-        #lst = [U[i].nodeLabel,U[i].data[0],UR[i].data[0], U[i].data[1], UR[i].data[1], U[i].data[2], UR[i].data[2]]
         lst = [U[i].nodeLabel,U[i].data[0],U[i].data[1],U[i].data[2],UR[i].data[0],UR[i].data[1],UR[i].data[2]]
         output_lst.append(lst)
 

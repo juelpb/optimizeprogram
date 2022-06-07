@@ -266,9 +266,7 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
         H2 = pull_AD(U_r,'H2') 
         A1 = pull_AD(U_r,'A1') 
         A2 = pull_AD(U_r,'A2') 
-
-        #print(f"H1: {round(float(H1*U_r),2)} -- H2: {round(float(H2*U_r),2)} -- A1: {round(float(A1*U_r),2)} -- A2: {round(float(A2*U_r),2)}") 
-        
+       
        
         P1    =  pull_AD(U_r,'P1') 
         P5    =  pull_AD(U_r,'P5') 
@@ -306,15 +304,12 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
         const = 0.5*1.25*B**2*omega**2
         
         U_r   =  U/(B*omega) # Reduced velocity
-        #print(U_r)
 
         H4 = pull_AD(U_r,'H4') 
         H3 = pull_AD(U_r,'H3') 
         A4 = pull_AD(U_r,'A4') 
         A3 = pull_AD(U_r,'A3') 
         
-        #print(f"H4: {round(float(H4),2)} -- H3: {round(float(H3),2)} -- A4: {round(float(A4),2)} -- A3: {round(float(A3),2)}") 
-
         
         P4    =  pull_AD(U_r,'P4') 
         P6    =  pull_AD(U_r,'P6') 
@@ -515,14 +510,12 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
             # location where the eigen frequencies are not zero (not overdamped)        
             pos_omega = np.where(Omega_s[i,:]!=0)
             # locations of Miu when Miu is positive in the array when Omega_s is nonzero
-            #print(f"Miu : {Miu[flag]}")
+            
             pos = np.where(Miu[flag]>=0)[0]
             
             if p == True:
                 print(f"U: {U} m/s -- Mode: {flag} -- Omega: {Omega}")
             if len(pos)>0:
-                #Omega_lst.append(Omega_lst_in)
-                #Zeta_lst.append(Zeta_lst_in)
                 U_lst.pop(-1)
                 if p == True:
                     print(f'Flutter speed @ {U} -- Mode = {flag} -- Omega= {Omega_s[i,flag]}')
@@ -582,8 +575,6 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
                 if p == True:
                     print(f"U: {U} m/s -- Mode: {flag} -- Omega: {Omega}")
                 if len(pos)>0:
-                    #Omega_lst.append(Omega_lst_in)
-                    #Zeta_lst.append(Zeta_lst_in)
                     U_lst.pop(-1)
                     if p == True:
                         print(f'Flutter speed @ {U} -- Mode = {flag} -- Omega= {Omega_s[i,flag]}')
@@ -645,8 +636,6 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
                 if p == True:
                     print(f"U: {U} m/s -- Mode: {flag} -- Omega: {Omega}")
                 if len(pos)>0:
-                    #Omega_lst.append(Omega_lst_in)
-                    #Zeta_lst.append(Zeta_lst_in)
                     U_lst.pop(-1)
                     if p == True:
                         print(f'Flutter speed @ {U} -- Mode = {flag} -- Omega= {Omega_s[i,flag]}')
@@ -663,9 +652,7 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
     print('Analysis is Done! - ' + str(round(t1 - t0, 3)) + ' sec.')
     
     if plot == True:
-        
-        plt.close('all')
-        
+              
         import seaborn as sns
         from matplotlib.pyplot import cm
         
@@ -685,17 +672,16 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
         
         
         colors = sns.color_palette('tab20',n_colors=len(Modal['Omega']))
-        #colors = cm.rainbow(np.linspace(0, 1, len(Modal['Omega'])))
-        
+                
         ax1 = plt.subplot(211)
         for i, c in enumerate(colors):
         
             f_omega = (interpolate.interp1d(U_arr, Omega_arr[:,i]))
             Omega_new = f_omega(U_new)
             ax1.plot(U_new, Omega_new,color=c, label=f'{i}')
-            #ax1.plot(U_arr, Omega_arr[:,i], 'o',markersize=3, color=c)
+            ax1.plot(U_arr, Omega_arr[:,i], 'o',markersize=3, color=c)
 
-        #plt.title(f'Flutter analysis -- H = {girder_height} m, {p_type}')
+        plt.title(f'Flutter analysis -- H = {girder_height} m, {p_type}')
         plt.xlabel('U [m/s]')
         plt.ylabel('$\omega$')
         
@@ -710,24 +696,24 @@ def flutter_speed(girder_height,p_type,plot=None,p=None):
             f_zeta = (interpolate.interp1d(U_arr, Zeta_arr[:,i]))
             Zeta_new = f_zeta(U_new)
             ax2.plot(U_new, Zeta_new, label=f'{i}',color=c)
-            #ax2.plot(U_arr, Zeta_arr[:,i],'o',markersize=3,color=c)
+            ax2.plot(U_arr, Zeta_arr[:,i],'o',markersize=3,color=c)
 
-        #textstr =  r'$U_{flutter}=$' + str(U_flutter) + '$m/s$'
-        #props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-        #ax2.text(0.05, 0.90, textstr, transform=ax2.transAxes, fontsize=18,
-                #verticalalignment='top', bbox=props)
+        textstr =  r'$U_{flutter}=$' + str(U_flutter) + '$m/s$'
+        props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+        ax2.text(0.05, 0.90, textstr, transform=ax2.transAxes, fontsize=18,
+                verticalalignment='top', bbox=props)
         plt.xlabel('U [m/s]') 
         plt.ylabel('$\zeta$')
         box = ax2.get_position()
-        #ax2.set_position([box.x0, box.y0 + box.height * 0.1,
-                 #box.width, box.height * 0.9])
-        #ax2.legend(loc='upper left', bbox_to_anchor=(1.02, 1),
-          #fancybox=True, shadow=True, ncol=3)
+        ax2.set_position([box.x0, box.y0 + box.height * 0.1,
+                 box.width, box.height * 0.9])
+        ax2.legend(loc='upper left', bbox_to_anchor=(1.02, 1),
+          fancybox=True, shadow=True, ncol=3)
         
-        #plt.tight_layout()
+        
         plt.subplots_adjust(right=0.85)
         plt.savefig(fname=path+f'/Scripts/FlutterAnalysis/Figures/{girder_height}_{p_type}.pdf',dpi=500,)
-        #plt.show()
+        plt.show()
         print('Plot done!')
 
     return U_flutter
